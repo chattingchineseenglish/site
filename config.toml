@@ -1,0 +1,8 @@
+baseURL = "http://example.org/"
+languageCode = "en-us"
+title = "Chatting English Chinese"
+theme = "aether"
+
+[params]
+logo = "/img/logo.png"
+brand = "/img/nav_logo.png"

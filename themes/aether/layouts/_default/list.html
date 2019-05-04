@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}" dir="ltr">
+  {{ partial "head.html" . }}
+  <body class="list-body">
+    {{ partial "nav-bar.html" . }}
+    <main class="card-container side-gutter">
+      {{- if isset $.Site.Params "logo"}}
+      <header>
+      {{ else }}
+        <header class="list-header">
+      {{ end -}}
+        <p class="list-header-subtext">{{ .Description }}</p>
+        {{- if isset $.Site.Params "logo"}}
+          <img src="{{- $.Site.Params.logo -}}" alt="Chatting English Chinese Logo" />
+        {{ else }}
+          <h1 class="list-header-title">{{ .Title }}</h1>
+        {{ end -}}
+      </header>
+      {{ $paginator := .Paginate (where .Pages "Params.displayinlist" "!=" false) -}}
+      {{- range $paginator.Pages -}}
+        {{ .Render "li" }}
+      {{- end }}
+    </main>
+    {{ if or ($paginator.HasPrev) ($paginator.HasNext) -}}
+    <nav class="pagination-nav side-padding">
+      {{ if $paginator.HasPrev }}<a href="{{ $paginator.Prev.URL }}" class="pagination-newer">&lt; Newer Posts</a>{{ end }}
+      {{ if $paginator.HasNext }}<a href="{{ $paginator.Next.URL }}" class="pagination-older">Older Posts &gt;</a>{{ end }}
+    </nav>
+    {{ end -}}
+    {{ partial "scripts.html" . }}
+  </body>
+</html>
