@@ -1,8 +1,7 @@
-baseURL = "http://example.org/"
+baseURL = "https://thepenrecorder.github.io/"
 languageCode = "en-us"
-title = "Chatting English Chinese"
+title = "the pen recorder"
 theme = "aether"
 
 [params]
 logo = "/img/logo.png"
-brand = "/img/nav_logo.png"
